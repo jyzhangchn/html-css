@@ -1,0 +1,171 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>骰子布局实现</title>
+<style type="text/css">
+	*{margin:0;padding: 0;}
+	#wrap{width:900px; margin:0 auto;}  /*margin：auto后若给wrap设置浮动或绝对定位则自动居中失效*/
+	body{background: #0F0E0E}
+	
+	/*统一设置六个骰子的背景*/
+	.first,.second,.third,.forth,.fifth,.sixth{ margin: 16px;
+		  padding: 4px;
+
+		  background-color: #e7e7e7;
+		  width: 104px;
+		  height: 104px;
+		  object-fit: contain;
+
+		  box-shadow:
+			inset 0 5px white, 
+			inset 0 -5px #bbb,
+			inset 5px 0 #d7d7d7, 
+			inset -5px 0 #d7d7d7;
+		  border-radius: 10%;
+		/*div并列显示*/
+		float:left;
+		position:relative;
+		 
+	}
+
+/*	统一设置点数样式*/
+	span{
+	  display: block;
+	  width: 24px;
+	  height: 24px;
+	  border-radius: 50%;
+	  margin: 4px;
+	  background-color: #333;
+	  box-shadow: inset 0 3px #111, inset 0 -3px #555;
+
+	}
+/*	position定位*/
+	.one{margin:0 auto;
+		position:relative;
+		top:40px;	
+	}
+/*	第二个骰子有两个样式*/
+/* 样式一：用flexbox布局：
+	
+	.second{display: -webkit-flex;
+			display: flex;
+			-webkit-align-items: center;
+         	 		align-items: center;
+ 			-webkit-justify-content: center;
+         	 		justify-content: center;
+		justify-content: space-around;
+	}
+	*/	
+/*	样式二：position布局*/
+	.second{position:relative}
+	.two_2{	position:absolute;
+			bottom:5px;
+			right:5px;
+	}
+/*第三个骰子用flexbox只能实现水平居中的效果？？？*/
+/*
+	.third{	display: flex; 
+			flex-flow: row wrap; 
+		 	align-items: center;
+			align-content:space-between;
+			justify-content: space-between;
+	}
+*/
+	.third{position:relative;}
+	.three_2{position: absolute;right:5px;bottom:5px;}
+	.three_3{margin:0 auto;
+		position:relative;
+		top:10px;}
+
+/*	第四个骰子点数在四个角的效果的实现与第五个骰子没差，故换了一种样式，采用两层div做居中的方法*/
+	.forth{display: -webkit-flex;
+			display: flex;
+			-webkit-align-items: center;
+         	 		align-items: center;
+ 			-webkit-justify-content: center;
+         	 		justify-content: center;}
+	.center{
+		height:52px;width:52px;
+		position:relative;
+	}
+	.four_1{position:absolute;
+		left:-12px;
+		top:-12px;}
+	.four_2{position:absolute;
+		right:-12px;
+		top:-12px;}
+	.four_3{position: absolute;
+		left:-12px;
+		bottom:-12px;}
+	.four_4{position: absolute;
+		right:-12px;
+		bottom:-12px;}
+/*	第五个骰子：position，暴力解决*/
+	.fifth{position:relative}
+	.five_1{position: absolute;right:5px;}
+	.five_2{position: absolute;bottom:5px;}
+	.five_3{position: absolute;right:5px;bottom:5px;}
+	.five_5{margin:0 auto;
+		position:relative;
+		top:10px;}
+/*	第六个骰子：flexbox*/
+	.sixth{	display: flex; 
+			flex-flow: column wrap; 
+		 	align-items: center;
+			align-content:space-between;
+			justify-content: space-between;}
+	
+</style>
+</head>
+
+<body>	
+<div id="wrap">
+
+	<div class="first">
+		<span class="one"></span> 
+	</div>
+	
+	<div class="second">
+		<span class="two_1"></span>
+		<span class="two_2"></span> 
+	</div>
+	
+	<div class="third">
+		<span class="three_1"></span>
+		<span class="three_2"></span>
+		<span class="three_3"></span>
+	</div>
+	
+	<div class="forth">
+		<div class="center">
+			<span class="four_1"></span>
+			<span class="four_2"></span>
+			<span class="four_3"></span>
+			<span class="four_4"></span>
+		</div>
+	</div>
+	
+	<div class="fifth">
+		<span class="five_1"></span>
+		<span class="five_2"></span>
+		<span class="five_3"></span>
+		<span class="five_4"></span>
+		<span class="five_5"></span>
+	</div>
+	
+	<div class="sixth">
+		<span class="six_1"></span>
+		<span class="six_2"></span>
+		<span class="six_3"></span>
+		<span class="six_4"></span>
+		<span class="six_5"></span>
+		<span class="six_6"></span>
+	</div>
+	
+</div>
+
+
+</body>
+</html>
